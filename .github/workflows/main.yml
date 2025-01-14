@@ -1,0 +1,19 @@
+name: ej-modeloExamen
+on:
+  push:
+    branches: [ nueva-caracteristica ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Descargar el codigo
+      uses: actions/setup-python@v5
+    - name: Instalar
+      run: pip install pytest
+    - name: Probar codigo
+      run: python3 test.py
+    - name: Construir la imagen
+      uses: docker/build-push-action@v6”
+      with:
+        file: ej_dockerfile
